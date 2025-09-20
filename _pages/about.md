@@ -7,6 +7,7 @@ redirect_from:
   - /about.html
 ---
 **Summary**
+
 Innovative Immunology Scientist with 8+ years of expertise in cell-based assays, primary/stem cell 
 culture, and high-throughput screening for therapeutic development. Proven track record in antibody/ADC characterization, 
 CRISPR-Cas9 gene editing, and functional immune assays (MSD/ELISA/Luminex, cytotoxicity, ADCC/ADCP). Skilled in assay 
