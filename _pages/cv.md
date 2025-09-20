@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "CV"
+title: "Curriculum vitae"
 permalink: /cv/
 author_profile: true
 redirect_from:
@@ -59,13 +59,3 @@ Innovative Immunology Scientist with 8+ years of expertise in cell-based assays,
 - Published multiple peer-reviewed articles on cancer immunotherapy, demonstrating expertise in monoclonal antibody research.  
 - Collaborated with cross-functional teams to integrate scientific insights into project timelines, ensuring alignment with organizational goals.  
 - Demonstrated strong soft skills, including communication, teamwork, and adaptability, in multicultural and multidisciplinary environments.  
-
-## Talks
-<ul>{% for post in site.talks reversed %}
-  {% include archive-single-talk-cv.html %}
-{% endfor %}</ul>
-
-## Teaching
-<ul>{% for post in site.teaching reversed %}
-  {% include archive-single-cv.html %}
-{% endfor %}</ul>
