@@ -17,7 +17,7 @@ from concept to preclinical validation.
 
 **add graphic that shows your skills**
 
-**Add interest**
+**add interest**
 
 **add vision/goals**
 
