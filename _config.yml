@@ -23,7 +23,7 @@ repository               : "shuangli-cv.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "images/shuangli.jpg"
+  avatar           : "shuangli.jpg"
   name             : "Shuang Li"
   pronouns         : # example: "she/her"  
   bio              : "I have a solid scientific background and a decade of professional knowledge in life science and tumor immunology and I am eager to be part of the Immunotherapy field to translate knowledge from academia to clinics."
