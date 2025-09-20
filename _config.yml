@@ -26,21 +26,21 @@ author:
   avatar           : "profile.png"
   name             : "Shuang Li"
   pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
+  bio              : "I have a solid scientific background and a decade of professional knowledge in life science and tumor immunology and I am eager to be part of the Immunotherapy field to translate knowledge from academia to clinics."
   location         : "Utrecht"
-  employer         : "Red Brick University"
+  employer         : "Merus N.V."
   uri              : # URL
   email            : "lishuang164224@outlook.com" 
 
   # Academic websites
   academia         : # URL
   arxiv            : # URL - Update with the correct link to your profile
-  googlescholar    : "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
+  googlescholar    : # 
   inspire-hep      : # URL
   impactstory      : # URL
   orcid            : "http://orcid.org/yourorcidurl"
   semantic         : # URL
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
+  pubmed           : "https://pubmed.ncbi.nlm.nih.gov/?term=Li+S&cauthor_id=34988920"
   researchgate     : # URL
   scopus           : # URL
 
@@ -48,7 +48,7 @@ author:
   bitbucket        : # Username - Update with your username on the site
   codepen          : # Username
   dribbble         : # Username
-  github           : "academicpages"
+  github           : # Username
   kaggle           : # Username  
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
@@ -63,7 +63,7 @@ author:
   keybase          : # Username
   instagram        : # Username
   lastfm           : # Username
-  linkedin         : # Username
+  linkedin         : https://www.linkedin.com/in/shuang-li-43b35517b/ # Username
   mastodon         : # URL
   medium           : # URL
   pinterest        : # Username
