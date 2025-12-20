@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprehensive guide to spatial transcriptomics technologies: from foundational methods to cutting-edge 3D profiling">
+    <title>Spatial Transcriptomics Technologies - AI4Bio Learning Hub</title>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSMFMG4TD5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KSMFMG4TD5');
+    </script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== BASE STYLES ===== */
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            line-height: 1.7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e7e7e7;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-nav {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .navbar-nav li {
+            margin: 5px 15px;
+        }
+
+        .navbar-nav a {
+            color: #666666;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .navbar-nav a:hover {
+            color: #849E58;
+        }
+
+        .home-link {
+            color: #849E58 !important;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: linear-gradient(135deg, #849E58 0%, #46670A 100%);
+            color: white;
+            padding: 50px 40px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(132, 158, 88, 0.3);
+        }
+
+        .header h1 {
+            margin: 0 0 15px 0;
+            font-size: 2.8em;
+        }
+
+        .header .subtitle {
+            font-size: 1.3em;
+            opacity: 0.95;
+            margin-bottom: 15px;
+        }
+
+        .header .description {
+            font-size: 1.05em;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ===== STATISTICS BAR ===== */
+        .stats-bar {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            border-left: 3px solid #849E58;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #849E58;
+            display: block;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.95em;
+            margin-top: 5px;
+        }
+
+        /* ===== CONTENT SECTIONS ===== */
+        .content-section {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            margin: 25px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section h2 {
+            color: #849E58;
+            border-bottom: 3px solid #849E58;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+
+        .content-section h3 {
+            color: #46670A;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+        }
+
+        .content-section ul {
+            line-height: 2;
+        }
+
+        /* ===== PAPER CARDS ===== */
+        .paper-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .paper-card {
+            border: 2px solid #f0f0f0;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            background: #fafafa;
+            position: relative;
+        }
+
+        .paper-card:hover {
+            border-color: #849E58;
+            box-shadow: 0 6px 20px rgba(132, 158, 88, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .paper-card h4 {
+            color: #849E58;
+            margin-top: 0;
+            font-size: 1.15em;
+            line-height: 1.4;
+        }
+
+        .paper-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 12px 0;
+        }
+
+        .meta-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: bold;
+        }
+
+        .year-badge {
+            background: #849E58;
+            color: white;
+        }
+
+        .journal-badge {
+            background: #D0DBC4;
+            color: #46670A;
+        }
+
+        .type-badge {
+            background: #8CB36D;
+            color: white;
+        }
+
+        .modality-badge {
+            background: #C0D175;
+            color: #1A4971;
+        }
+
+        .paper-description {
+            font-size: 0.95em;
+            color: #555;
+            line-height: 1.6;
+            margin: 12px 0;
+        }
+
+        .paper-highlights {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 12px 0;
+            font-size: 0.9em;
+        }
+
+        .paper-highlights ul {
+            margin: 8px 0;
+            padding-left: 20px;
+        }
+
+        .paper-highlights li {
+            line-height: 1.5;
+            margin: 5px 0;
+        }
+
+        .paper-links {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .paper-link {
+            display: inline-block;
+            padding: 6px 14px;
+            background: #849E58;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85em;
+            transition: all 0.3s;
+        }
+
+        .paper-link:hover {
+            background: #46670A;
+            transform: translateY(-2px);
+        }
+
+        .paper-link i {
+            margin-right: 5px;
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+            margin: 30px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #849E58 0%, #46670A 100%);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .timeline-marker {
+            width: 20px;
+            height: 20px;
+            background: #849E58;
+            border: 4px solid white;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            box-shadow: 0 0 0 4px rgba(132, 158, 88, 0.2);
+        }
+
+        .timeline-year {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #849E58;
+            margin-bottom: 10px;
+        }
+
+        /* ===== HIGHLIGHT BOX ===== */
+        .highlight-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 4px solid #849E58;
+            padding: 20px 25px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box h4 {
+            color: #46670A;
+            margin-top: 0;
+        }
+
+        /* ===== COMPARISON TABLE ===== */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #849E58 0%, #46670A 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        /* ===== METHOD CATEGORIES ===== */
+        .method-category {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            transition: all 0.3s;
+        }
+
+        .method-category:hover {
+            border-color: #849E58;
+            box-shadow: 0 4px 15px rgba(132, 158, 88, 0.15);
+        }
+
+        .method-category h4 {
+            color: #849E58;
+            margin-top: 0;
+            font-size: 1.3em;
+        }
+
+        .method-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .method-item {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            border-left: 3px solid #849E58;
+        }
+
+        .method-item a {
+            color: #849E58;
+            text-decoration: underline;
+            font-weight: 600;
+            transition: color 0.3s, text-decoration 0.3s;
+        }
+
+        .method-item a:hover {
+            color: #46670A;
+            text-decoration: none;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+            text-align: center;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        footer a {
+            color: #849E58;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #46670A;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                flex-direction: column !important;
+            }
+
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px;
+            }
+
+            .timeline-marker {
+                left: 20px;
+                transform: none;
+            }
+
+            .paper-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-bar {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== FIGURE STYLES ===== */
+        .figure-container {
+            margin: 30px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #dce4ec;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .figure-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+            display: block;
+        }
+
+        .figure-caption {
+            margin-top: 15px;
+            font-size: 0.95em;
+            color: #555;
+            text-align: center;
+            line-height: 1.6;
+            padding: 0 10px;
+        }
+
+        .figure-caption strong {
+            color: #46670A;
+            font-weight: 700;
+        }
+
+        /* ===== UTILITY CLASSES ===== */
+        .icon-heading {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+
+        .feature-badge {
+            background: #E3F2FD;
+            color: #1976D2;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <ul class="navbar-nav">
+                <li>
+                    <a href="../index.html" class="home-link">
+                        <i class="fas fa-book"></i> Back to Learning Hub
+                    </a>
+                </li>
+                <li>
+                    <a href="../../">
+                        <i class="fas fa-home"></i> Xinru's Homepage
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Spatial Transcriptomics Technologies</h1>
+            <div class="subtitle">A Comprehensive Guide to Spatially-Resolved Gene Expression Analysis (2016-2025)</div>
+            <div class="description">
+                From the foundational spatial transcriptomics method to cutting-edge 3D thick-tissue profiling:
+                Understanding how to map gene expression while preserving spatial context in tissues.
+                Based on systematic analysis of 17+ landmark papers spanning nearly a decade of innovation.
+            </div>
+        </header>
+
+        <!-- Statistics Bar -->
+        <section class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-number">17+</span>
+                <div class="stat-label">Papers Analyzed<br>(2016-2025)</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">3</span>
+                <div class="stat-label">Technology<br>Categories</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">200 um</span>
+                <div class="stat-label">Max Tissue<br>Depth (3D)</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">10,000+</span>
+                <div class="stat-label">Genes Profiled<br>Simultaneously</div>
+            </div>
+        </section>
+
+        <!-- Evolution Timeline Figure -->
+        <section class="content-section">
+            <h2>Evolution of Spatial Transcriptomics (2016-2025)</h2>
+            <div class="figure-container">
+                <img src="figures/Spatial-Fig1.jpeg" alt="Evolution of Spatial Transcriptomics Platforms Timeline">
+                <p class="figure-caption">
+                    <strong>Figure 1: Historical Timeline of Platform Development.</strong> 
+                    The field evolved along two parallel tracks: sequencing-based methods (blue, top) beginning with the original Spatial Transcriptomics in 2016, through Visium and Stereo-seq, to Visium HD in 2023; and imaging-based methods (orange, bottom) starting with MERFISH publication, leading to commercial platforms Xenium, CosMx, and MERSCOPE in 2021-2022. Recent advances include FFPE compatibility and multi-modal protein + RNA capabilities.
+                </p>
+            </div>
+        </section>
+
+        <!-- Overview Section -->
+        <section id="overview" class="content-section">
+            <h2>What is Spatial Transcriptomics?</h2>
+
+            <p>
+                Spatial transcriptomics refers to a collection of methods that measure gene expression
+                while preserving the spatial location of transcripts within tissues. Unlike traditional
+                RNA-seq that requires tissue homogenization (losing spatial information) or single-cell
+                RNA-seq that requires cell dissociation (losing tissue context), spatial transcriptomics
+                maintains the native tissue architecture while profiling the transcriptome.
+            </p>
+
+            <h3>Why Spatial Context Matters</h3>
+            <ul>
+                <li>
+                    <strong>Tissue Architecture Understanding:</strong> Cells behave differently based on
+                    their location - a cancer cell at the tumor edge behaves differently than one in the center
+                </li>
+                <li>
+                    <strong>Cell-Cell Interactions:</strong> Understanding signaling between neighboring cells
+                    requires knowing their spatial relationships (ligand-receptor pairs)
+                </li>
+                <li>
+                    <strong>Microenvironment Mapping:</strong> Immune cells, stromal cells, and parenchymal
+                    cells form functional niches that can only be studied in spatial context
+                </li>
+                <li>
+                    <strong>Disease Heterogeneity:</strong> Tumors, inflammatory lesions, and developmental
+                    abnormalities show spatial patterns that inform diagnosis and treatment
+                </li>
+                <li>
+                    <strong>3D Organization:</strong> Tissues are three-dimensional; understanding cell
+                    clustering and connectivity patterns requires volumetric analysis
+                </li>
+            </ul>
+
+            <h3>Three Major Technology Categories</h3>
+
+            <div class="method-category">
+                <h4>1. Sequencing-Based Methods (Capture + Seq)</h4>
+                <p>Use spatially-barcoded oligonucleotides to capture mRNA at defined positions, followed by next-generation sequencing. Offer whole-transcriptome coverage but lower spatial resolution.</p>
+                <div class="method-list">
+                    <div class="method-item"><strong>Spatial Transcriptomics</strong> (2016) - 100 um spots</div>
+                    <div class="method-item"><strong>Slide-seq/V2</strong> (2019/2021) - 10 um beads</div>
+                    <div class="method-item"><strong>HDST</strong> (2019) - 2 um features</div>
+                    <div class="method-item"><strong>Seq-Scope</strong> (2021) - Subcellular resolution</div>
+                    <div class="method-item"><strong>Stereo-seq</strong> (2022) - Nanoscale resolution</div>
+                    <div class="method-item"><strong>Visium/VisiumHD</strong> (10x) - Commercial platform</div>
+                </div>
+            </div>
+
+            <div class="method-category">
+                <h4>2. Imaging-Based Methods (In Situ)</h4>
+                <p>Detect transcripts directly in tissue using fluorescence hybridization or in situ sequencing. Achieve single-molecule/subcellular resolution but typically target specific gene panels.</p>
+                <div class="method-list">
+                    <div class="method-item"><strong>seqFISH+</strong> (2019) - 10,000 genes, super-resolution</div>
+                    <div class="method-item"><strong>MERFISH</strong> - Error-robust barcoding</div>
+                    <div class="method-item"><strong>STARmap</strong> (2018) - 3D in situ sequencing</div>
+                    <div class="method-item"><strong>Deep-STARmap</strong> (2025) - 200 um thick tissue</div>
+                    <div class="method-item"><strong>Xenium</strong> (10x) - Commercial in situ</div>
+                    <div class="method-item"><strong>CosMx SMI</strong> (NanoString) - 1000+ genes</div>
+                </div>
+            </div>
+
+            <div class="method-category">
+                <h4>3. Emerging & Multi-Modal Methods</h4>
+                <p>Novel approaches combining transcriptomics with other modalities (protein, translation, temporal dynamics) or using innovative readout strategies.</p>
+                <div class="method-list">
+                    <div class="method-item"><strong>SPOTS</strong> (2023) - Spatial protein + transcriptome</div>
+                    <div class="method-item"><strong>Deep-RIBOmap</strong> (2025) - Spatial translatomics</div>
+                    <div class="method-item"><strong>ESPRESSO</strong> (2025) - Spatiotemporal omics</div>
+                    <div class="method-item"><strong>GeoMx DSP</strong> (NanoString) - Targeted profiling</div>
+                </div>
+            </div>
+
+            <div class="figure-container">
+                <img src="figures/Spatial-Fig2.jpeg" alt="Spatial Transcriptomics Platforms Comparison Diagram">
+                <p class="figure-caption">
+                    <strong>Figure 2: Platform Classification by Resolution and Gene Coverage.</strong> 
+                    Comprehensive comparison of spatial transcriptomics platforms organized by spatial resolution (y-axis: subcellular to multi-cell) and gene coverage (x-axis: targeted panels to whole transcriptome). Imaging-based platforms (orange) offer subcellular resolution with targeted panels, while sequencing-based platforms (blue) provide whole transcriptome coverage at varying resolutions.
+                </p>
+            </div>
+        </section>
+
+        
+
+        <!-- Technology Comparison -->
+        <section class="content-section">
+            <h2>Technology Comparison Guide</h2>
+
+            <div class="figure-container">
+                <img src="figures/Spatial-Fig3.jpeg" alt="Spatial Resolution Comparison">
+                <p class="figure-caption">
+                    <strong>Figure 3: Understanding Spatial Resolution Across Platforms.</strong> 
+                    Visual comparison of resolution scales: GeoMx DSP ROI captures multiple cells (~100μm), Visium spots contain 5-10 cells (~55μm), Visium HD/Stereo-seq bins offer single-cell resolution, and imaging-based platforms (Xenium, CosMx, MERSCOPE) achieve subcellular resolution (&lt;1μm) with individual transcript detection.
+                </p>
+            </div>
+
+            <div class="figure-container">
+                <img src="figures/Spatial-Fig4.jpeg" alt="Technical Workflows Comparison">
+                <p class="figure-caption">
+                    <strong>Figure 4: Sequencing-Based vs. Imaging-Based Workflows.</strong> 
+                    Left (blue): Sequencing-based methods capture RNA with spatial barcodes, perform library prep and NGS sequencing, outputting spot × gene count matrices. Right (orange): Imaging-based methods use fluorescent probe hybridization with cyclic imaging rounds and decoding algorithms, outputting (x, y, gene_id) coordinates for individual transcripts.
+                </p>
+            </div>
+
+            <h3>Resolution vs Coverage Trade-off</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Resolution</th>
+                        <th>Gene Coverage</th>
+                        <th>Tissue Depth</th>
+                        <th>Best For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Visium</strong></td>
+                        <td>55 um spots</td>
+                        <td>Whole transcriptome</td>
+                        <td>10 um sections</td>
+                        <td>Discovery, FFPE tissues</td>
+                    </tr>
+                    <tr>
+                        <td><strong>VisiumHD</strong></td>
+                        <td>2-8 um bins</td>
+                        <td>Whole transcriptome</td>
+                        <td>10 um sections</td>
+                        <td>High-resolution discovery</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Slide-seq V2</strong></td>
+                        <td>10 um beads</td>
+                        <td>Whole transcriptome</td>
+                        <td>10 um sections</td>
+                        <td>Near-cellular resolution</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stereo-seq</strong></td>
+                        <td>~500 nm</td>
+                        <td>Whole transcriptome</td>
+                        <td>Thin sections</td>
+                        <td>Subcellular patterns</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Xenium</strong></td>
+                        <td>Subcellular</td>
+                        <td>100-5000 genes</td>
+                        <td>5-10 um</td>
+                        <td>Targeted, clinical FFPE</td>
+                    </tr>
+                    <tr>
+                        <td><strong>seqFISH+</strong></td>
+                        <td>Super-resolution</td>
+                        <td>10,000 genes</td>
+                        <td>~5 um</td>
+                        <td>Discovery + localization</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CosMx SMI</strong></td>
+                        <td>Subcellular</td>
+                        <td>1000+ genes</td>
+                        <td>5 um</td>
+                        <td>High-plex imaging</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Deep-STARmap</strong></td>
+                        <td>Single-cell</td>
+                        <td>1000+ genes</td>
+                        <td>60-200 um</td>
+                        <td>3D architecture</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GeoMx DSP</strong></td>
+                        <td>ROI-based</td>
+                        <td>Whole transcriptome</td>
+                        <td>10 um</td>
+                        <td>Targeted enrichment</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Choosing the Right Technology</h3>
+
+            <div class="highlight-box">
+                <h4>For Discovery Studies (Unbiased)</h4>
+                <p>Use <strong>sequencing-based methods</strong> (Visium, VisiumHD, Slide-seq, Stereo-seq) when you need whole-transcriptome coverage without predefined gene targets. Best for hypothesis generation and atlas building.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h4>For Targeted Validation (High Resolution)</h4>
+                <p>Use <strong>imaging-based methods</strong> (Xenium, CosMx, seqFISH+, MERFISH) when you have specific genes of interest and need single-cell or subcellular resolution. Best for validating scRNA-seq findings.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h4>For 3D Tissue Architecture</h4>
+                <p>Use <strong>Deep-STARmap/RIBOmap</strong> for thick tissue (60-200 um) profiling to capture complete 3D cellular organization. Essential for studying cell-cell interactions and spatial clustering that are missed in 2D.</p>
+            </div>
+
+			<div class="highlight-box">
+			    <h4>For Clinical FFPE Samples</h4>
+			    <p>Use <strong>Visium, Xenium, or GeoMx</strong> — platforms optimized for archival formalin-fixed paraffin-embedded tissue.</p>
+			    <p class="metric-note">
+			        <strong>Quality Check:</strong> Assess RNA integrity using <strong>DV200</strong> (% of RNA fragments &gt;200 nucleotides). 
+			        Aim for <strong>DV200 ≥50%</strong> for optimal results.
+			    </p>
+			</div>
+
+            <div class="highlight-box">
+                <h4>For Multi-Modal Integration</h4>
+                <p>Use <strong>SPOTS</strong> for simultaneous protein + transcriptome, <strong>Deep-RIBOmap</strong> for transcription + translation, or combine Xenium + Visium + Chromium for comprehensive multi-platform profiling.</p>
+            </div>
+
+            <div class="figure-container">
+                <img src="figures/Spatial-Fig5.jpeg" alt="Platform Selection Decision Flowchart">
+                <p class="figure-caption">
+                    <strong>Figure 5: Platform Selection Decision Flowchart.</strong> 
+                    A practical guide for choosing the right spatial transcriptomics platform based on your research needs. Key decision points include: whole transcriptome vs. targeted panels, single-cell vs. spot-level resolution, protein + RNA requirements, FFPE sample compatibility, and ROI selection needs.
+                </p>
+            </div>
+        </section>
+
+        <!-- Key Papers Section -->
+ <section class="content-section">
+    <h2>Landmark Papers Organized by Methodological Approach</h2>
+
+    <!-- CATEGORY 1: The "Array" Approach -->
+    <h3>1. Sequencing-Based Spatial Arrays (Capturing RNA onto surfaces)</h3>
+    <p class="category-explainer" style="margin-bottom: 20px; font-style: italic; color: #666;">
+        <strong>Why these are grouped:</strong> These methods work by placing a tissue section onto a slide printed with barcoded capture spots (like beads or DNA nanoballs). The RNA is released from the tissue, captured on the surface, and then sequenced off-slide. The resolution is determined by the physical size and density of the capture spots on the array.
+    </p>
+    <div class="paper-grid">
+        <div class="paper-card">
+            <h4>Spatial Transcriptomics Method (The Original) (2016)</h4>
+            <div class="paper-meta">
+                <span class="meta-badge year-badge">2016</span>
+                <span class="meta-badge journal-badge">Science</span>
+            </div>
+            <p class="paper-description">
+                Stahl et al. - The foundational paper introducing genome-wide spatial transcriptomics using arrayed barcoded primers on glass slides (the predecessor to 10x Genomics Visium).
+            </p>
+            <div class="paper-highlights">
+                <strong>Key Innovations:</strong>
+                <ul>
+                    <li>First spatial genome-wide approach</li>
+                    <li>100 um diameter spots with positional barcodes</li>
+                    <li>Compatible with H&E staining for histology overlap</li>
+                </ul>
+            </div>
+            <div class="paper-links">
+                <a href="https://doi.org/10.1126/science.aaf2403" class="paper-link"><i class="fas fa-external-link-alt"></i> Paper</a>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <h4>Slide-seq V2 (High-Resolution Beads) (2021)</h4>
+            <div class="paper-meta">
+                <span class="meta-badge year-badge">2021</span>
+                <span class="meta-badge journal-badge">Nat Biotech</span>
+            </div>
+            <p class="paper-description">
+                Stickels et al. - A major improvement in array resolution using tightly packed, tiny microbeads instead of printed spots to achieve near-cellular resolution.
+            </p>
+            <div class="paper-highlights">
+                <strong>Key Features:</strong>
+                <ul>
+                    <li>10 um bead resolution (near-cellular)</li>
+                    <li>10-fold sensitivity improvement over original Slide-seq</li>
+                    <li>Genome-wide capture</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <h4>Stereo-seq (Nanoscale Resolution) (2022)</h4>
+            <div class="paper-meta">
+                <span class="meta-badge year-badge">2022</span>
+                <span class="meta-badge journal-badge">Cell</span>
+            </div>
+            <p class="paper-description">
+                Chen et al. - Utilizing DNA nanoball arrays to achieve the highest resolution among array-based methods, enabling subcellular definitions over large areas.
+            </p>
+            <div class="paper-highlights">
+                <strong>Key Features:</strong>
+                <ul>
+                    <li>Nanoscale resolution (~500 nm center-to-center)</li>
+                    <li>Very large field of view capability (whole embryos)</li>
+                    <li>Subcellular resolution with whole transcriptome</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- CATEGORY 2: The "Imaging" Approach -->
+    <h3 style="margin-top: 40px;">2. Imaging-Based In Situ Technologies (Visualizing RNA directly in tissue)</h3>
+    <p class="category-explainer" style="margin-bottom: 20px; font-style: italic; color: #666;">
+        <strong>Why these are grouped:</strong> Instead of capturing RNA onto a slide, these methods leave the RNA inside the tissue cells. They use fluorescent probes and sophisticated microscopes to capture images of individual RNA molecules over multiple rounds of hybridization. They offer very high (subcellular) resolution but usually target a predefined panel of genes rather than the whole transcriptome.
+    </p>
+    <div class="paper-grid">
+        <div class="paper-card">
+            <h4>STARmap (3D In Situ Sequencing) (2018)</h4>
+            <div class="paper-meta">
+                <span class="meta-badge year-badge">2018</span>
+                <span class="meta-badge journal-badge">Science</span>
+            </div>
+            <p class="paper-description">
+                Wang et al. - An innovative approach combining hydrogel tissue clearing with error-correcting sequencing directly inside intact tissue blocks.
+            </p>
+            <div class="paper-highlights">
+                <strong>Key Innovations:</strong>
+                <ul>
+                    <li>Truly 3D intact-tissue RNA sequencing (150 um thick)</li>
+                    <li>SEDAL sequencing with error correction</li>
+                    <li>Bypasses reverse transcription using SNAIL probes</li>
+                </ul>
+            </div>
+            <div class="paper-links">
+                <a href="https://doi.org/10.1126/science.aat5691" class="paper-link"><i class="fas fa-external-link-alt"></i> Paper</a>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <h4>seqFISH+ (Transcriptome-Scale Imaging) (2019)</h4>
+            <div class="paper-meta">
+                <span class="meta-badge year-badge">2019</span>
+                <span class="meta-badge journal-badge">Nature</span>
+            </div>
+            <p class="paper-description">
+                Eng et al. - A landmark paper demonstrating that fluorescence imaging could scale to detect 10,000+ genes at super-resolution using clever color-coding strategies.
+            </p>
+            <div class="paper-highlights">
+                <strong>Key Innovations:</strong>
+                <ul>
+                    <li>Massive multiplexing (10,000 genes) via pseudocolour barcoding</li>
+                    <li>Subcellular mRNA localization at super-resolution</li>
+                    <li>High sensitivity (~35,000 transcripts detected per cell)</li>
+                </ul>
+            </div>
+            <div class="paper-links">
+                <a href="https://doi.org/10.1038/s41586-019-1049-y" class="paper-link"><i class="fas fa-external-link-alt"></i> Paper</a>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <h4>CosMx SMI (Commercial High-Plex Imaging) (2022)</h4>
+            <div class="paper-meta">
+                <span class="meta-badge year-badge">2022</span>
+                <span class="meta-badge journal-badge">Nat Biotech</span>
+            </div>
+            <p class="paper-description">
+                He et al. - A representative paper for the new generation of robust, commercial single-molecule imaging platforms suitable for difficult clinical samples.
+            </p>
+            <div class="paper-highlights">
+                <strong>Key Features:</strong>
+                <ul>
+                    <li>High-plex single-molecule imaging (1000+ gene panels)</li>
+                    <li>Robust performance on FFPE tissue sections</li>
+                    <li>Focus on clinical translation and reproducibility</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- CATEGORY 3: Expansions -->
+    <h3 style="margin-top: 40px;">3. Beyond 2D RNA: Multi-Modal, 3D, and Temporal Expansions</h3>
+    <p class="category-explainer" style="margin-bottom: 20px; font-style: italic; color: #666;">
+        <strong>Why these are grouped:</strong> These papers represent the "next frontiers" of spatial biology. They push beyond standard 2D transcriptomics by adding new modalities (like proteins or active translation), analyzing thick 3D tissues, or adding the fourth dimension of time (live-cell tracking).
+    </p>
+    <div class="paper-grid">
+        <div class="paper-card">
+            <h4>SPOTS (Spatial Protein & Transcriptome) (2023)</h4>
+            <div class="paper-meta">
+                <span class="meta-badge year-badge">2023</span>
+                <span class="meta-badge journal-badge">Nat Biotech</span>
+            </div>
+            <p class="paper-description">
+                Ben-Chetrit et al. - A pioneering method combining whole transcriptome spatial profiling (Visium) with protein detection in the exact same tissue section.
+            </p>
+            <div class="paper-highlights">
+                <strong>Key Innovations:</strong>
+                <ul>
+                    <li>True multi-modal integration (RNA + Protein)</li>
+                    <li>Uses DNA-barcoded antibodies readable by sequencing</li>
+                    <li>Allows correlation of gene expression vs. actual protein levels</li>
+                </ul>
+            </div>
+            <div class="paper-links">
+                <a href="https://doi.org/10.1038/s41587-022-01536-3" class="paper-link"><i class="fas fa-external-link-alt"></i> Paper</a>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <h4>Deep-STARmap & Deep-RIBOmap (3D & Translatomics) (2025)</h4>
+            <div class="paper-meta">
+                <span class="meta-badge year-badge">2025</span>
+                <span class="meta-badge journal-badge">Nat Methods</span>
+            </div>
+            <p class="paper-description">
+                Sui et al. - Advances 3D imaging into thicker tissues more cheaply, and introduces "translatomics"—mapping actively translating ribosomes, not just total mRNA.
+            </p>
+            <div class="paper-highlights">
+                <strong>Key Innovations:</strong>
+                <ul>
+                    <li>Scalable 3D profiling in thick blocks (up to 200 um)</li>
+                    <li>Significant cost reduction via CNVK photocrosslinking</li>
+                    <li>First spatial translatomics method (RIBOmap)</li>
+                </ul>
+            </div>
+            <div class="paper-links">
+                <a href="https://doi.org/10.1038/s41592-025-02867-0" class="paper-link"><i class="fas fa-external-link-alt"></i> Paper</a>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <h4>ESPRESSO (Spatiotemporal Live-Cell Omics) (2025)</h4>
+            <div class="paper-meta">
+                <span class="meta-badge year-badge">2025</span>
+                <span class="meta-badge journal-badge">Nat Methods</span>
+            </div>
+            <p class="paper-description">
+                Scipioni et al. - Moves from static snapshots to dynamic movies. It uses organelle phenotyping to track cell states over 24+ hours in live cells.
+            </p>
+            <div class="paper-highlights">
+                <strong>Key Innovations:</strong>
+                <ul>
+                    <li>Adds the temporal dimension (4D tracking)</li>
+                    <li>Hyperspectral imaging and CNN enhancement</li>
+                    <li>Tracks live-cell state transitions in 2D and 3D spheroids</li>
+                </ul>
+            </div>
+            <div class="paper-links">
+                <a href="https://doi.org/10.1038/s41592-025-02863-4" class="paper-link"><i class="fas fa-external-link-alt"></i> Paper</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CATEGORY 4: Synthesis -->
+    <h3 style="margin-top: 40px;">4. Benchmarking, Biological Application, and Future Outlook</h3>
+    <p class="category-explainer" style="margin-bottom: 20px; font-style: italic; color: #666;">
+        <strong>Why these are grouped:</strong> These papers are less about inventing a new method and more about making sense of the existing ones. They include direct head-to-head comparisons of platforms, deep biological applications demonstrating real-world utility, and high-level perspectives on where the field is headed.
+    </p>
+    <div class="paper-grid">
+        <div class="paper-card">
+            <h4>Visium-GeoMx-Chromium Comparison (Benchmarking) (2025)</h4>
+            <div class="paper-meta">
+                <span class="meta-badge year-badge">2025</span>
+                <span class="meta-badge journal-badge">Nat Comm</span>
+            </div>
+            <p class="paper-description">
+                Dong et al. - A crucial resource for users trying to choose a platform. It provides a comprehensive comparison of three major commercial technologies on difficult FFPE tumor samples.
+            </p>
+            <div class="paper-highlights">
+                <strong>Key Findings:</strong>
+                <ul>
+                    <li>Compares unbiased sampling (Visium) vs. targeted enrichment (GeoMx)</li>
+                    <li>Validates FFPE compatibility across major platforms</li>
+                    <li>Highlights the importance of computational deconvolution</li>
+                </ul>
+            </div>
+            <div class="paper-links">
+                <a href="https://doi.org/10.1038/s41467-025-59005-9" class="paper-link"><i class="fas fa-external-link-alt"></i> Paper</a>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <h4>Spatial TRM Cell Diversity (Biological Application) (2025)</h4>
+            <div class="paper-meta">
+                <span class="meta-badge year-badge">2025</span>
+                <span class="meta-badge journal-badge">Nature</span>
+            </div>
+            <p class="paper-description">
+                Reina-Campos et al. - A prime example of how these tools are used for biological discovery. It integrates multiple spatial platforms to reveal how tissue architecture dictates immune cell behavior.
+            </p>
+            <div class="paper-highlights">
+                <strong>Key Innovations:</strong>
+                <ul>
+                    <li>Advanced multi-platform integration (Xenium, MERSCOPE, VisiumHD)</li>
+                    <li>Development of a new tissue coordinate system (IMAP)</li>
+                    <li>Links spatial niches to immune cell maintenance</li>
+                </ul>
+            </div>
+            <div class="paper-links">
+                <a href="https://doi.org/10.1038/s41586-024-08466-x" class="paper-link"><i class="fas fa-external-link-alt"></i> Paper</a>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <h4>Human Cell Atlas Perspective (Future Outlook) (2024)</h4>
+            <div class="paper-meta">
+                <span class="meta-badge year-badge">2024</span>
+                <span class="meta-badge journal-badge">Nature</span>
+            </div>
+            <p class="paper-description">
+                Rood et al. - A high-level view of how spatial data will be integrated into global efforts like the Human Cell Atlas to create AI-driven foundation models of biology.
+            </p>
+            <div class="paper-highlights">
+                <strong>Key Perspectives:</strong>
+                <ul>
+                    <li>Integrating spatial maps with single-cell census data</li>
+                    <li>The role of spatial data in understanding development and disease</li>
+                    <li>The future of AI/ML approaches for atlas-scale analysis</li>
+                </ul>
+            </div>
+            <div class="paper-links">
+                <a href="https://doi.org/10.1038/s41586-024-08338-4" class="paper-link"><i class="fas fa-external-link-alt"></i> Paper</a>
+            </div>
+        </div>
+    </div>
+</section>
+        <!-- Analysis Frameworks Section -->
+        <section class="content-section">
+            <h2>Common Analysis Workflows</h2>
+
+            <div class="figure-container">
+                <img src="figures/Spatial-Fig6.jpeg" alt="Data Formats and Structures">
+                <p class="figure-caption">
+                    <strong>Figure 6: Data Formats and Unified Structure.</strong> 
+                    (A) Sequencing-based output: spot × gene count matrices with spatial coordinates (MTX, H5AD, CSV formats). (B) Imaging-based output: individual transcript coordinates requiring cell segmentation (Parquet, CSV, Zarr formats). (C) Both converge to a unified AnnData/H5AD format containing cell × gene matrices, spatial coordinates, cell boundaries, and metadata layers.
+                </p>
+            </div>
+
+            <div class="figure-container">
+                <img src="figures/Spatial-Fig7.jpeg" alt="Computational Challenges by Platform">
+                <p class="figure-caption">
+                    <strong>Figure 7: Platform-Specific Computational Challenges.</strong> 
+                    Visium (spot-level): deconvolution and scRNA-seq integration challenges. Visium HD/Stereo-seq: scalability issues with billions of data points and memory management. Imaging-based platforms: cell segmentation accuracy and transcript assignment errors. All platforms share common challenges including batch effects, normalization, and spatial statistics.
+                </p>
+            </div>
+
+            <h3>1. Data Processing & Quality Control</h3>
+            <ul>
+                <li><strong>Image Registration:</strong> Align multi-round images using fiducial markers or amplicon positions</li>
+                <li><strong>Deconvolution:</strong> Enhance resolution using PSF-based methods (Huygens, deconvolution algorithms)</li>
+                <li><strong>Spot/Barcode Calling:</strong> Detect transcripts using local maxima detection, barcode decoding with error correction</li>
+                <li><strong>Cell Segmentation:</strong> Watershed, CellPose, or Baysor for single-cell boundaries</li>
+            </ul>
+
+            <h3>2. Cell Type Annotation</h3>
+            <ul>
+                <li><strong>Reference-Based:</strong> Transfer labels from scRNA-seq using FuseMap, Harmony, or Cell2location</li>
+                <li><strong>Unsupervised:</strong> Louvain/Leiden clustering on spatial features followed by marker gene validation</li>
+                <li><strong>Deconvolution:</strong> SpatialDecon, RCTD, or Cell2location for spot-level cell type mixtures</li>
+            </ul>
+
+            <h3>3. Spatial Analysis</h3>
+            <ul>
+                <li><strong>Neighborhood Analysis:</strong> Squidpy for cellular interaction scores, Delaunay triangulation for neighbors</li>
+                <li><strong>Spatial Domains:</strong> BayesSpace, HMRF, or SpaGCN for identifying tissue regions</li>
+                <li><strong>Ligand-Receptor:</strong> CellChat, CellPhoneDB for cell-cell communication inference</li>
+                <li><strong>3D Analysis:</strong> Distance transform watershed, volumetric clustering, spatial statistics</li>
+            </ul>
+
+            <h3>Key Software Packages</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Package</th>
+                        <th>Language</th>
+                        <th>Primary Use</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Scanpy/Squidpy</strong></td>
+                        <td>Python</td>
+                        <td>Single-cell and spatial analysis</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Seurat</strong></td>
+                        <td>R</td>
+                        <td>Comprehensive spatial workflows</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cell2location</strong></td>
+                        <td>Python</td>
+                        <td>Cell type deconvolution</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CellPose</strong></td>
+                        <td>Python</td>
+                        <td>Cell segmentation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Baysor</strong></td>
+                        <td>Julia</td>
+                        <td>Transcript-based segmentation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>FuseMap</strong></td>
+                        <td>Python</td>
+                        <td>Spatial atlas integration</td>
+                    </tr>
+                    <tr>
+                        <td><strong>BayesSpace</strong></td>
+                        <td>R</td>
+                        <td>Spatial clustering enhancement</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <p style="font-size: 1.1em;">
+            Part of the <a href="../">AI4Bio Learning Hub</a> by Xinru Qiu
+        </p>
+        <p style="font-size: 0.9em; margin-top: 15px;">
+            Last updated: December 2025 
+        </p>
+        <p style="font-size: 0.85em; color: #999; margin-top: 10px;">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:xinru.reina.qiu@gmail.com" style="color: #999;">xinru.reina.qiu@gmail.com</a> |
+            <i class="fab fa-github"></i>
+            <a href="https://github.com/xqiu625" style="color: #999;">GitHub</a>
+        </p>
+        <p style="font-size: 0.8em; margin-top: 15px; color: #888;">
+            🔒 Privacy: This site uses Google Analytics to improve content. No personal data is collected.<br>
+            Content released under CC BY 4.0.
+        </p>
+    </footer>
+</body>
+</html>
