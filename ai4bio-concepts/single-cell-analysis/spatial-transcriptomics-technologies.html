@@ -596,8 +596,8 @@
             <div class="figure-container">
                 <img src="figures/Spatial-Fig1.jpeg" alt="Evolution of Spatial Transcriptomics Platforms Timeline">
                 <p class="figure-caption">
-                    <strong>Figure 1: Historical Timeline of Platform Development.</strong> 
-                    The field evolved along two parallel tracks: sequencing-based methods (blue, top) beginning with the original Spatial Transcriptomics in 2016, through Visium and Stereo-seq, to Visium HD in 2023; and imaging-based methods (orange, bottom) starting with MERFISH publication, leading to commercial platforms Xenium, CosMx, and MERSCOPE in 2021-2022. Recent advances include FFPE compatibility and multi-modal protein + RNA capabilities.
+                    <strong>Figure 1. Timeline of spatial transcriptomics technology development.</strong>
+                    Upper track (teal): sequencing-based methods from original ST (2016) through Visium, Slide-seq, Seq-Scope (2021), Stereo-seq (2022), to Visium HD (2023). Lower track (orange-coral): imaging-based methods from MERFISH foundation through STARmap, seqFISH+, MERSCOPE, Xenium, and CosMx. Gold stars indicate breakthroughs. Bottom scale shows resolution progression from 100μm to subcellular.
                 </p>
             </div>
         </section>
@@ -680,8 +680,8 @@
             <div class="figure-container">
                 <img src="figures/Spatial-Fig2.jpeg" alt="Spatial Transcriptomics Platforms Comparison Diagram">
                 <p class="figure-caption">
-                    <strong>Figure 2: Platform Classification by Resolution and Gene Coverage.</strong> 
-                    Comprehensive comparison of spatial transcriptomics platforms organized by spatial resolution (y-axis: subcellular to multi-cell) and gene coverage (x-axis: targeted panels to whole transcriptome). Imaging-based platforms (orange) offer subcellular resolution with targeted panels, while sequencing-based platforms (blue) provide whole transcriptome coverage at varying resolutions.
+                    <strong>Figure 2. Platform classification by spatial resolution (y-axis) and gene coverage (x-axis).</strong>
+                    Upper left (coral): imaging-based platforms (Xenium, CosMx, MERSCOPE, STARmap) with subcellular resolution and targeted panels. Upper right (teal): high-resolution sequencing (Stereo-seq, Seq-Scope, Visium HD, HDST) with whole transcriptome. Middle right (golden): near single-cell sequencing (Slide-seqV2). Lower right (light teal): classic sequencing (Visium, GeoMx WTA). Lower left: ROI-based targeted (GeoMx panel mode). Stars denote subcellular + whole transcriptome breakthroughs.
                 </p>
             </div>
         </section>
@@ -695,16 +695,16 @@
             <div class="figure-container">
                 <img src="figures/Spatial-Fig3.jpeg" alt="Spatial Resolution Comparison">
                 <p class="figure-caption">
-                    <strong>Figure 3: Understanding Spatial Resolution Across Platforms.</strong> 
-                    Visual comparison of resolution scales: GeoMx DSP ROI captures multiple cells (~100μm), Visium spots contain 5-10 cells (~55μm), Visium HD/Stereo-seq bins offer single-cell resolution, and imaging-based platforms (Xenium, CosMx, MERSCOPE) achieve subcellular resolution (&lt;1μm) with individual transcript detection.
+                    <strong>Figure 3. Visual comparison of spatial resolution from multi-cell regions to individual transcripts.</strong>
+                    Left to right: GeoMx DSP ROI (50-600μm, 50-100+ cells), Visium (55μm, 5-10 cells), Slide-seqV2 (10μm, 1-3 cells), Visium HD/HDST (2μm, single-cell), Stereo-seq/Seq-Scope (0.5μm, subcellular, ★), Xenium/CosMx/MERSCOPE (&lt;0.1μm, individual transcripts). Yellow outlines: sequencing-based; coral outlines: imaging-based. Sequencing platforms capture ~20K genes; imaging platforms detect 500-6,000 genes.
                 </p>
             </div>
 
             <div class="figure-container">
                 <img src="figures/Spatial-Fig4.jpeg" alt="Technical Workflows Comparison">
                 <p class="figure-caption">
-                    <strong>Figure 4: Sequencing-Based vs. Imaging-Based Workflows.</strong> 
-                    Left (blue): Sequencing-based methods capture RNA with spatial barcodes, perform library prep and NGS sequencing, outputting spot × gene count matrices. Right (orange): Imaging-based methods use fluorescent probe hybridization with cyclic imaging rounds and decoding algorithms, outputting (x, y, gene_id) coordinates for individual transcripts.
+                    <strong>Figure 4. Technical workflows across three approaches.</strong>
+                    Left (Array-based Capture): tissue permeabilization → mRNA capture on barcoded spots → reverse transcription → library prep → demultiplexing; output: Spot × Gene matrix. Center (In Situ Barcoding): spatial barcode sequencing → tissue overlay → mRNA capture → sequencing → high-resolution mapping; output: subcellular spatial matrix (★). Right (Imaging-based): probe hybridization → platform-specific detection (combinatorial/RCA/ISS) → cyclic imaging → barcode decoding → single-molecule localization; output: (x,y,gene_id) coordinates. Bottom table compares resolution, genes, output format, FFPE compatibility, and throughput.
                 </p>
             </div>
 
@@ -820,8 +820,8 @@
             <div class="figure-container">
                 <img src="figures/Spatial-Fig5.jpeg" alt="Platform Selection Decision Flowchart">
                 <p class="figure-caption">
-                    <strong>Figure 5: Platform Selection Decision Flowchart.</strong> 
-                    A practical guide for choosing the right spatial transcriptomics platform based on your research needs. Key decision points include: whole transcriptome vs. targeted panels, single-cell vs. spot-level resolution, protein + RNA requirements, FFPE sample compatibility, and ROI selection needs.
+                    <strong>Figure 5. Decision flowchart for platform selection.</strong>
+                    Starting from sample type: FFPE samples → subcellular (Xenium, CosMx, MERSCOPE), multi-cell ROI (GeoMx), or whole transcriptome (Visium HD). Fresh frozen → Discovery path by resolution: subcellular (Stereo-seq, Seq-Scope ★), single-cell (Visium HD, Slide-seqV2), multi-cell (Visium); Hypothesis-driven path → imaging platforms or GeoMx; Protein+RNA → CosMx, Xenium, GeoMx; Rare cells → GeoMx DSP. Quick reference table summarizes recommendations by experimental need.
                 </p>
             </div>
         </section>
@@ -1120,16 +1120,16 @@
             <div class="figure-container">
                 <img src="figures/Spatial-Fig6.jpeg" alt="Data Formats and Structures">
                 <p class="figure-caption">
-                    <strong>Figure 6: Data Formats and Unified Structure.</strong> 
-                    (A) Sequencing-based output: spot × gene count matrices with spatial coordinates (MTX, H5AD, CSV formats). (B) Imaging-based output: individual transcript coordinates requiring cell segmentation (Parquet, CSV, Zarr formats). (C) Both converge to a unified AnnData/H5AD format containing cell × gene matrices, spatial coordinates, cell boundaries, and metadata layers.
+                    <strong>Figure 6. Data output formats across platforms.</strong>
+                    Panel A (Sequencing-based): Spot × Gene count matrix with coordinates; high-res platforms require segmentation (⚠). Formats: MTX, H5AD, Parquet. Panel B (Imaging-based): transcript coordinate table (transcript_id, x, y, gene); requires cell segmentation. Formats: Parquet, CSV, Zarr. Panel C (Unified): all platforms converge to Cell × Gene matrix with spatial coordinates in AnnData/H5AD structure containing X (counts), obs (cell metadata), var (gene metadata), obsm (spatial coordinates), layers, and uns (images).
                 </p>
             </div>
 
             <div class="figure-container">
                 <img src="figures/Spatial-Fig7.jpeg" alt="Computational Challenges by Platform">
                 <p class="figure-caption">
-                    <strong>Figure 7: Platform-Specific Computational Challenges.</strong> 
-                    Visium (spot-level): deconvolution and scRNA-seq integration challenges. Visium HD/Stereo-seq: scalability issues with billions of data points and memory management. Imaging-based platforms: cell segmentation accuracy and transcript assignment errors. All platforms share common challenges including batch effects, normalization, and spatial statistics.
+                    <strong>Figure 7. Platform-specific computational challenges.</strong>
+                    Low-res Sequencing (Visium): deconvolution, reference integration; tools: cell2location, RCTD; difficulty: medium. High-res Sequencing (Visium HD, Stereo-seq): cell segmentation (⚠), scalability, binning strategy; tools: Cellpose, Baysor; difficulty: high. Imaging-based: cell segmentation, assignment errors (~5-15%), panel limitations; tools: Cellpose, Baysor, StarDist; difficulty: high. ROI-based (GeoMx): low sample size, cell mixtures in AOIs; difficulty: low-medium (computation), high (statistics). Shared challenges (all platforms): batch effects, normalization, spatial statistics, cell-cell interactions.
                 </p>
             </div>
 
