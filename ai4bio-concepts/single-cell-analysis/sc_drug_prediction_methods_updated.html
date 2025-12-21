@@ -293,6 +293,8 @@
         .gen-badge { background: #FF6B6B; color: white; }
         .mech-badge { background: #9370DB; color: white; }
         .screen-badge { background: #A9D563; color: white; }
+        .review-badge { background: #9B59B6; color: white; }
+        .multi-badge { background: #1ABC9C; color: white; }
 
         .paper-description {
             color: #555;
@@ -355,10 +357,65 @@
             font-weight: bold;
         }
 
+        /* ===== CONCEPT FIGURES (HORIZONTAL) ===== */
+        .concept-figure {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 1px solid #e0e0e0;
+        }
+
+        .concept-figure img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .concept-figure .figure-caption {
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            line-height: 1.6;
+        }
+
+        .concept-figure .figure-title {
+            font-weight: bold;
+            color: #6b8e23;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .concept-figure .figure-title i {
+            color: #8FC50E;
+        }
+
+        .concept-figure.full-width {
+            padding: 30px;
+        }
+
+        .concept-figure.highlight {
+            border-left: 4px solid #8FC50E;
+            background: linear-gradient(to right, #f8fcf0, white);
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .paper-grid { grid-template-columns: 1fr; }
             .header h1 { font-size: 2em; }
+            .concept-figure { padding: 15px; }
+            .concept-figure .figure-title { font-size: 1em; }
         }
     </style>
 </head>
@@ -397,20 +454,37 @@
             <!-- Statistics -->
             <div class="stats-bar">
                 <div class="stat-item">
-                    <span class="stat-number">22</span>
+                    <span class="stat-number">33</span>
                     <span class="stat-label">Curated Methods</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">5</span>
-                    <span class="stat-label">Years (2021-2025)</span>
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">Years (2021-2026)</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">100M+</span>
                     <span class="stat-label">Largest Training Set</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">AI4Bio</span>
-                    <span class="stat-label">Hub</span>
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+            </div>
+
+            <!-- Method Landscape Overview Figure -->
+            <div class="concept-figure full-width highlight">
+                <div class="figure-title">
+                    <i class="fas fa-sitemap"></i>
+                    Figure: The Method Landscape — Taxonomy by Learning Paradigm
+                </div>
+                <img src="figures/The_Method_Landscape___Taxonomy_by_Learning_Paradigm.jpeg" alt="The Method Landscape - Taxonomy by Learning Paradigm">
+                <div class="figure-caption">
+                    <strong>Navigate the field at a glance:</strong> A hierarchical organization of all 33+ methods by their underlying ML paradigm — 
+                    <span style="color: #3B82F6; font-weight: bold;">Discriminative</span> (predict labels/scores), 
+                    <span style="color: #F7A254; font-weight: bold;">Generative</span> (predict post-treatment states), 
+                    <span style="color: #9333EA; font-weight: bold;">Multi-modal</span> (integrate modalities), and 
+                    <span style="color: #22C55E; font-weight: bold;">Agentic</span> (autonomous pipelines). 
+                    Use the Quick Selection Guide to find the best starting point for your specific task.
                 </div>
             </div>
 
@@ -458,6 +532,21 @@
                     </div>
                 </div>
             </section>
+
+            <!-- Core Problem Conceptual Figure -->
+            <div class="concept-figure full-width">
+                <div class="figure-title">
+                    <i class="fas fa-bullseye"></i>
+                    Figure: The Core Problem — Perturbation Prediction as Vector Field Learning
+                </div>
+                <img src="figures/The_Core_Problem___Perturbation_Prediction_as_Vector_Field_Learning.jpeg" alt="The Core Problem: Perturbation Prediction as Vector Field Learning">
+                <div class="figure-caption">
+                    <strong>Understanding the ML formulation:</strong> Drug response prediction is NOT binary classification — it's learning a conditional transformation. 
+                    <em>Left:</em> The biological question of predicting how cells change after treatment (X<sub>treated</sub> = f(X<sub>control</sub>, d)). 
+                    <em>Center:</em> Modern methods (CRISP, State, CellOT) predict vector fields Δx or transport maps T: P(control) → P(treated). 
+                    <em>Right:</em> Why single-cell resolution matters — bulk RNA-seq averages hide resistant subpopulations that determine treatment failure.
+                </div>
+            </div>
 
             <!-- CATEGORY 1: Foundation Models & Transfer Learning -->
             <section class="content-section">
@@ -546,6 +635,22 @@
                             <a href="https://github.com/OSU-BMBL/scDEAL" class="paper-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
                         </div>
                     </div>
+
+                    <!-- C2S-Scale -->
+                    <div class="paper-card">
+                        <h4>C2S-Scale</h4>
+                        <div class="paper-meta">
+                            <span class="meta-badge year-badge">2025</span>
+                            <span class="meta-badge foundation-badge">27B LLM</span>
+                        </div>
+                        <p class="paper-description">
+                            LLMs (up to 27B params) trained on 1B+ transcriptomic tokens using Cell2Sentence. Enables zero-shot cell classification, perturbation prediction, and experimentally validated virtual drug screening.
+                        </p>
+                        <div class="paper-links">
+                            <a href="https://doi.org/10.1101/2025.04.14.648850" class="paper-link" target="_blank"><i class="fas fa-file-alt"></i> Paper</a>
+                            <a href="https://c2s-scale.org" class="paper-link" target="_blank"><i class="fas fa-globe"></i> Website</a>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -602,6 +707,38 @@
                         <div class="paper-links">
                             <a href="https://doi.org/10.1038/s41467-024-55707-8" class="paper-link" target="_blank"><i class="fas fa-file-alt"></i> Paper</a>
                             <a href="https://github.com/theislab/IMPA" class="paper-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+
+                    <!-- SAMS-VAE -->
+                    <div class="paper-card">
+                        <h4>SAMS-VAE</h4>
+                        <div class="paper-meta">
+                            <span class="meta-badge year-badge">2023</span>
+                            <span class="meta-badge gen-badge">Sparse VAE</span>
+                        </div>
+                        <p class="paper-description">
+                            Sparse Additive Mechanism Shift VAE. Models perturbation effects as sparse, additive shifts in latent space. Enables interpretable and composable predictions for drug combinations.
+                        </p>
+                        <div class="paper-links">
+                            <a href="https://arxiv.org/abs/2311.02794" class="paper-link" target="_blank"><i class="fas fa-file-alt"></i> Paper</a>
+                            <a href="https://github.com/insitro/sams-vae" class="paper-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+
+                    <!-- MORPH -->
+                    <div class="paper-card">
+                        <h4>MORPH</h4>
+                        <div class="paper-meta">
+                            <span class="meta-badge year-badge">2025</span>
+                            <span class="meta-badge gen-badge">Cross-Modal VAE</span>
+                        </div>
+                        <p class="paper-description">
+                            Discrepancy-based VAE with attention for predicting perturbation outcomes across conditions and data modalities. First method to handle both transcriptomic and imaging data in a unified framework.
+                        </p>
+                        <div class="paper-links">
+                            <a href="https://doi.org/10.1101/2025.06.27.661992" class="paper-link" target="_blank"><i class="fas fa-file-alt"></i> Paper</a>
+                            <a href="https://github.com/uhlerlab/MORPH" class="paper-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -769,6 +906,53 @@
                             <a href="https://github.com/CSB5/CaDRReS-Sc" class="paper-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
                         </div>
                     </div>
+
+                    <!-- DrugReflector -->
+                    <div class="paper-card">
+                        <h4>DrugReflector</h4>
+                        <div class="paper-meta">
+                            <span class="meta-badge year-badge">2025</span>
+                            <span class="meta-badge screen-badge">Active Learning</span>
+                        </div>
+                        <p class="paper-description">
+                            Deep learning ensemble trained on CMap signatures. Uses active reinforcement learning to iteratively refine hit discovery, achieving 13-17× improvement over random screening.
+                        </p>
+                        <div class="paper-links">
+                            <a href="https://doi.org/10.1126/science.adi8577" class="paper-link" target="_blank"><i class="fas fa-file-alt"></i> Science</a>
+                        </div>
+                    </div>
+
+                    <!-- PBMF -->
+                    <div class="paper-card">
+                        <h4>PBMF</h4>
+                        <div class="paper-meta">
+                            <span class="meta-badge year-badge">2025</span>
+                            <span class="meta-badge screen-badge">Biomarker</span>
+                        </div>
+                        <p class="paper-description">
+                            Predictive Biomarker Modeling Framework uses contrastive learning to distinguish treatment-specific predictive biomarkers from prognostic markers, improving clinical trial patient selection.
+                        </p>
+                        <div class="paper-links">
+                            <a href="https://doi.org/10.1016/j.ccell.2025.03.029" class="paper-link" target="_blank"><i class="fas fa-file-alt"></i> Cancer Cell</a>
+                            <a href="https://doi.org/10.5281/zenodo.14766044" class="paper-link" target="_blank"><i class="fab fa-github"></i> Zenodo</a>
+                        </div>
+                    </div>
+
+                    <!-- Combocat -->
+                    <div class="paper-card">
+                        <h4>Combocat</h4>
+                        <div class="paper-meta">
+                            <span class="meta-badge year-badge">2025</span>
+                            <span class="meta-badge screen-badge">Combination</span>
+                        </div>
+                        <p class="paper-description">
+                            Open-source platform combining acoustic liquid handling with ML for drug combination screening. Sparse mode reduces measurements by 90% to enable the largest single-cell-line combo screen (9,045 pairs).
+                        </p>
+                        <div class="paper-links">
+                            <a href="https://doi.org/10.1038/s41467-025-66223-8" class="paper-link" target="_blank"><i class="fas fa-file-alt"></i> Paper</a>
+                            <a href="https://github.com/wcwr/combocat" class="paper-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -778,6 +962,21 @@
                 <div class="category-intro">
                     <i class="fas fa-quote-left"></i> 
                     <strong>Goal:</strong> "I have image data (Cell Painting) or want to link molecular structures to phenotypes."
+                </div>
+
+                <!-- Multi-Modal Integration Figure -->
+                <div class="concept-figure full-width">
+                    <div class="figure-title">
+                        <i class="fas fa-layer-group"></i>
+                        Figure: Multi-Modal Integration — Beyond Transcriptomics
+                    </div>
+                    <img src="figures/Multi-Modal_Integration___Beyond_Transcriptomics.jpeg" alt="Multi-Modal Integration - Beyond Transcriptomics">
+                    <div class="figure-caption">
+                        <strong>Two paradigms for integrating imaging with drug response:</strong> 
+                        <em>Left (MolPhenix):</em> Contrastive learning aligns Cell Painting images with molecular structures for zero-shot drug retrieval — "find molecules that produce THIS phenotype."
+                        <em>Right (GigaTIME):</em> Translates cheap H&E slides into virtual 21-channel multiplex immunofluorescence (IF), predicting immunotherapy response biomarkers (CD8, PD-L1) as accurately as real IF.
+                        <em>Bottom:</em> Why multi-modal matters — complementary information at different cost points enables cross-modal prediction as cheap proxy for expensive assays.
+                    </div>
                 </div>
 
                 <div class="paper-grid">
@@ -794,6 +993,22 @@
                         <div class="paper-links">
                             <a href="https://arxiv.org/abs/2409.08302" class="paper-link" target="_blank"><i class="fas fa-file-alt"></i> ArXiv</a>
                             <a href="https://www.youtube.com/watch?v=4d9BcFIOEEI" class="paper-link" target="_blank"><i class="fab fa-youtube"></i> Video</a>
+                        </div>
+                    </div>
+
+                    <!-- GigaTIME -->
+                    <div class="paper-card">
+                        <h4>GigaTIME</h4>
+                        <div class="paper-meta">
+                            <span class="meta-badge year-badge">2026</span>
+                            <span class="meta-badge multi-badge">Virtual mIF</span>
+                        </div>
+                        <p class="paper-description">
+                            Cross-modal AI that translates H&E slides into virtual 21-channel multiplex IF images (40M cells trained). Enables population-scale tumor immune microenvironment analysis for drug response.
+                        </p>
+                        <div class="paper-links">
+                            <a href="https://doi.org/10.1016/j.cell.2025.11.016" class="paper-link" target="_blank"><i class="fas fa-file-alt"></i> Cell</a>
+                            <a href="https://aka.ms/gigatime_code" class="paper-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -872,21 +1087,119 @@
                 </div>
             </section>
 
+            <!-- CATEGORY 7: AI Agents & Decision Support -->
+            <section class="content-section">
+                <h2>🤖 AI Agents & Clinical Decision Support</h2>
+                <div class="category-intro">
+                    <i class="fas fa-quote-left"></i>
+                    <strong>Goal:</strong> "I want autonomous AI systems that can orchestrate multi-step drug discovery workflows or support clinical decisions."
+                </div>
+
+                <div class="paper-grid">
+                    <!-- Agentic AI Review -->
+                    <div class="paper-card">
+                        <h4>Agentic AI in Drug Discovery</h4>
+                        <div class="paper-meta">
+                            <span class="meta-badge year-badge">2025</span>
+                            <span class="meta-badge review-badge">Review</span>
+                        </div>
+                        <p class="paper-description">
+                            Comprehensive review of LLM-based agents with perception, computation, action, and memory tools. Documents case studies compressing drug discovery workflows from months to hours.
+                        </p>
+                        <div class="paper-links">
+                            <a href="https://arxiv.org/abs/2510.27130" class="paper-link" target="_blank"><i class="fas fa-file-alt"></i> arXiv</a>
+                        </div>
+                    </div>
+
+                    <!-- MTBBench -->
+                    <div class="paper-card">
+                        <h4>MTBBench</h4>
+                        <div class="paper-meta">
+                            <span class="meta-badge year-badge">2025</span>
+                            <span class="meta-badge journal-badge">NeurIPS</span>
+                        </div>
+                        <p class="paper-description">
+                            First agentic benchmark for molecular tumor board-style decisions. Tests multimodal, longitudinal reasoning with tool-augmented agents achieving 11.2% gains over baseline LLMs.
+                        </p>
+                        <div class="paper-links">
+                            <a href="https://github.com/bunnelab/MTBBench" class="paper-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://huggingface.co/datasets/EeshaanJain/MTBBench" class="paper-link" target="_blank"><i class="fas fa-database"></i> Data</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CATEGORY 8: Experimental Platforms & Translational -->
+            <section class="content-section">
+                <h2>🧫 Experimental Platforms & Translational Tools</h2>
+                <div class="category-intro">
+                    <i class="fas fa-quote-left"></i>
+                    <strong>Goal:</strong> "I need integrated wet-lab and computational platforms for drug testing or personalized therapy design."
+                </div>
+
+                <!-- Translational Gap Figure -->
+                <div class="concept-figure full-width">
+                    <div class="figure-title">
+                        <i class="fas fa-road"></i>
+                        Figure: From Prediction to Clinic — The Translational Gap
+                    </div>
+                    <img src="figures/From_Prediction_to_Clinic___The_Translational_Gap.jpeg" alt="From Prediction to Clinic - The Translational Gap">
+                    <div class="figure-caption">
+                        <strong>The complete pipeline from computation to clinical trial:</strong> 
+                        <em>Top:</em> Three-stage flow from scRNA-seq → AI Model → Prediction → Experimental Validation → Clinical Trial.
+                        <em>Middle:</em> Two validation case studies — Tumor-on-a-Chip (Nat Biotech 2025) achieves 3× better CAR-T killing through AI-predicted FABP5 knockout; MTBBench benchmarks AI clinical decision support showing tool-augmented agents reach 69% agreement with experts.
+                        <em>Bottom:</em> The validation hierarchy from in silico (publication) through in vitro, ex vivo, animal models, to human trials (FDA approval). Current frontier: Tahoe-100M and Tumor-on-a-Chip pushing methods to Level 2-3.
+                    </div>
+                </div>
+
+                <div class="paper-grid">
+                    <!-- Tumor-on-a-Chip -->
+                    <div class="paper-card">
+                        <h4>Tumor-on-a-Chip for CAR-T</h4>
+                        <div class="paper-meta">
+                            <span class="meta-badge year-badge">2025</span>
+                            <span class="meta-badge journal-badge">Nat Biotech</span>
+                        </div>
+                        <p class="paper-description">
+                            Microengineered glioblastoma model integrating scRNA-seq with patient-derived CAR-T cells. Identified FABP5 as a CAR-T fitness gene and screened metabolic enhancers for clinical testing.
+                        </p>
+                        <div class="paper-links">
+                            <a href="https://doi.org/10.1038/s41587-025-02628-4" class="paper-link" target="_blank"><i class="fas fa-file-alt"></i> Paper</a>
+                        </div>
+                    </div>
+
+                    <!-- CancerPAM -->
+                    <div class="paper-card">
+                        <h4>CancerPAM</h4>
+                        <div class="paper-meta">
+                            <span class="meta-badge year-badge">2025</span>
+                            <span class="meta-badge journal-badge">Nat Comm</span>
+                        </div>
+                        <p class="paper-description">
+                            Multi-omics pipeline for personalized CRISPR gene therapy. Identifies tumor-specific PAM sites for cytokine knock-in to remodel tumor microenvironment and enhance CAR-T efficacy.
+                        </p>
+                        <div class="paper-links">
+                            <a href="https://doi.org/10.1038/s41467-025-67328-w" class="paper-link" target="_blank"><i class="fas fa-file-alt"></i> Paper</a>
+                            <a href="https://codeocean.com/capsule/7671597/tree/v1" class="paper-link" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </div>
     </main>
 
     <!-- Footer -->
     <footer>
         <p style="font-size: 1.1em;">
-            Part of the <a href="https://xqiu625.github.io/ai4bio-concepts/">AI4Bio Learning Hub</a> by Xinru Qiu
+            Part of the <a href="../">AI4Bio Learning Hub</a> by Xinru Qiu
         </p>
         <p style="font-size: 0.9em; margin-top: 15px;">
-            Last updated: November 2025
-        </p>
-        <p style="font-size: 0.8em; margin-top: 10px; color: #666;">
-            <strong>Note:</strong> Methods are categorized by primary utility to the user.
+            Last updated: December 2025 
         </p>
         <p style="font-size: 0.85em; color: #999; margin-top: 10px;">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:xinru.reina.qiu@gmail.com" style="color: #999;">xinru.reina.qiu@gmail.com</a> |
             <i class="fab fa-github"></i>
             <a href="https://github.com/xqiu625" style="color: #999;">GitHub</a>
         </p>
@@ -895,6 +1208,8 @@
             Content released under CC BY 4.0.
         </p>
     </footer>
+</body>
+</html>
     
     <!-- JAVASCRIPT FOR INTERACTIVE DEMO -->
     <script>
