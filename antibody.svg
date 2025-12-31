@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="60" height="60">
+  <!-- Y-shaped antibody structure -->
+  <!-- Heavy chains (blue) -->
+  <path d="M 100 150 L 100 100 L 70 50 L 50 20" 
+        stroke="#1a5f7a" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <path d="M 100 100 L 130 50 L 150 20" 
+        stroke="#1a5f7a" stroke-width="8" fill="none" stroke-linecap="round"/>
+  
+  <!-- Light chains (lighter blue) -->
+  <path d="M 70 50 L 40 30" 
+        stroke="#6c8cc0" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M 130 50 L 160 30" 
+        stroke="#6c8cc0" stroke-width="6" fill="none" stroke-linecap="round"/>
+  
+  <!-- Antigen binding sites (circles at the top) -->
+  <circle cx="50" cy="20" r="10" fill="#e67e22" opacity="0.8"/>
+  <circle cx="150" cy="20" r="10" fill="#e67e22" opacity="0.8"/>
+  
+  <!-- Fc region (bottom circle) -->
+  <circle cx="100" cy="150" r="12" fill="#1a5f7a" opacity="0.8"/>
+  
+  <!-- Variable regions (small circles) -->
+  <circle cx="70" cy="50" r="8" fill="#6c8cc0" opacity="0.9"/>
+  <circle cx="130" cy="50" r="8" fill="#6c8cc0" opacity="0.9"/>
+</svg>
