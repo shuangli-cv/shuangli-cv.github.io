@@ -13,4 +13,4 @@
 *.bak
 
 # Backup files
-*_backup.png
+*_backup.*
